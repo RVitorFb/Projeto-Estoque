@@ -12,25 +12,27 @@ Sistema de gerenciamento de estoque desenvolvido em Java utilizando o Spring Boo
 
 ## Estrutura do Projeto
 
+```
 estoque/
  ├── src/
  │   ├── main/
  │   │   ├── java/com/tjportas/estoque/
- │   │   │   ├── EstoqueApplication.java
+ │   │   │   ├── EstoqueApplication.java         # Classe principal da aplicação
  │   │   │   ├── controller/
- │   │   │   │   └── estoqueController.java
+ │   │   │   │   └── estoqueController.java      # Controlador REST para operações de estoque
  │   │   │   ├── entity/
- │   │   │   │   ├── Estoque.java
- │   │   │   │   └── Produto.java
+ │   │   │   │   ├── Estoque.java                # Entidade Estoque
+ │   │   │   │   └── Produto.java                # Entidade Produto
  │   │   │   └── repository/
- │   │   │       └── EstoqueRepository.java
+ │   │   │       └── EstoqueRepository.java      # Repositório JPA para Estoque
  │   │   └── resources/
- │   │       ├── application.properties
+ │   │       ├── application.properties          # Configurações da aplicação
  │   │       └── META-INF/
  │   └── test/java/com/tjportas/estoque/
- │       └── EstoqueApplicationTests.java
- ├── pom.xml
- └── mvnw / mvnw.cmd
+ │       └── EstoqueApplicationTests.java        # Testes unitários
+ ├── pom.xml                                     # Arquivo de configuração do Maven
+ └── mvnw / mvnw.cmd                             # Wrappers do Maven
+```
 
 ## Configuração
 
