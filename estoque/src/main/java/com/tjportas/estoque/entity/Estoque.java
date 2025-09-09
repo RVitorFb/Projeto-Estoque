@@ -1,6 +1,8 @@
 package com.tjportas.estoque.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,7 +26,10 @@ public class Estoque {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long codigo;
+
+    @Enumerated(EnumType.STRING)
     private Produto produto;
+    
     private String modelo;
     private String fornecedor;
     private Integer quantidade;
