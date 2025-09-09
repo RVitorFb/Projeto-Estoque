@@ -16,21 +16,21 @@ estoque/
  ├── src/
  │   ├── main/
  │   │   ├── java/com/tjportas/estoque/
- │   │   │   ├── EstoqueApplication.java         # Classe principal da aplicação
+ │   │   │   ├── EstoqueApplication.java
  │   │   │   ├── controller/
- │   │   │   │   └── estoqueController.java      # Controlador REST para operações de estoque
+ │   │   │   │   └── estoqueController.java
  │   │   │   ├── entity/
- │   │   │   │   ├── Estoque.java                # Entidade Estoque
- │   │   │   │   └── Produto.java                # Entidade Produto
+ │   │   │   │   ├── Estoque.java
+ │   │   │   │   └── Produto.java
  │   │   │   └── repository/
- │   │   │       └── EstoqueRepository.java      # Repositório JPA para Estoque
+ │   │   │       └── EstoqueRepository.java
  │   │   └── resources/
- │   │       ├── application.properties          # Configurações da aplicação
+ │   │       ├── application.properties
  │   │       └── META-INF/
  │   └── test/java/com/tjportas/estoque/
- │       └── EstoqueApplicationTests.java        # Testes unitários
- ├── pom.xml                                     # Arquivo de configuração do Maven
- └── mvnw / mvnw.cmd                             # Wrappers do Maven
+ │       └── EstoqueApplicationTests.java
+ ├── pom.xml
+ └── mvnw / mvnw.cmd
 
 ## Configuração
 
