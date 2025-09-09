@@ -39,7 +39,7 @@ estoque/
    - Maven (opcional se usar os wrappers mvnw)
 
 2. Clonar o repositório:
-   git clone https://github.com/seu-usuario/Projeto-Estoque.git
+   git clone https://github.com/GabrielPeicher/Projeto-Estoque.git
    cd Projeto-Estoque/estoque
 
 3. Configurar o banco de dados no arquivo application.properties, se necessário.
