@@ -21,11 +21,12 @@ import lombok.ToString;
 
 public class Estoque {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
-private Long id;
-private String nome;
-private Integer quantidade;
-private Double valor;
-private String fornecedor;
-private Produto produto;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private Long codigo;
+    private Produto produto;
+    private String modelo;
+    private String fornecedor;
+    private Integer quantidade;
+    private Double valor;
 }
