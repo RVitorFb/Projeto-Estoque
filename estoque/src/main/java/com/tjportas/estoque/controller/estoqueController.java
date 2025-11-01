@@ -39,9 +39,7 @@ public class estoqueController {
         repository.findAll().forEach(estoque::add);
 
 
-        if (estoque.isEmpty()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+        if 
         return new ResponseEntity<>(estoque, HttpStatus.OK);
     }
 
