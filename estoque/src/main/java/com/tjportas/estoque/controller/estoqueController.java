@@ -38,8 +38,9 @@ public class estoqueController {
         List<Estoque> estoque = new ArrayList<>();
         repository.findAll().forEach(estoque::add);
 
-
-        if 
+        if (estoque.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
         return new ResponseEntity<>(estoque, HttpStatus.OK);
     }
 
