@@ -1,18 +1,22 @@
 package com.tjportas.estoque.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import com.tjportas.estoque.entity.Modelo;
 
 @Entity
 @Data
@@ -22,17 +26,21 @@ import com.tjportas.estoque.entity.Modelo;
 @AllArgsConstructor
 @ToString
 
-public class Estoque {
+public class Modelo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_estoque;
-
-    private Long codigo;
-    private Integer quantidade;
-    private Double valor;
+    private Long id_modelo;
+   
+    private String cor;
+    private String material;
+    private String largura;
+    private String altura;
 
     @ManyToOne
-    @JoinColumn(name = "id_modelo")
-    private Modelo modelo;
+    @JoinColumn(name = "id_fornecedor")
+    private Fornecedor fornecedor;
 
+    @OneToMany(mappedBy = "modelo")
+    @JsonIgnore
+    private List<Estoque> estoque;
 }

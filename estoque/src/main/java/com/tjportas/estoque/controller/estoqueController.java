@@ -52,9 +52,6 @@ public class estoqueController {
         if (estoqueExistente.isPresent()) {
             Estoque estoqueAtualizado = estoqueExistente.get();
             estoqueAtualizado.setCodigo(estoque.getCodigo());
-            estoqueAtualizado.setProduto(estoque.getProduto());
-            estoqueAtualizado.setModelo(estoque.getModelo());
-            estoqueAtualizado.setFornecedor(estoque.getFornecedor());
             estoqueAtualizado.setQuantidade(estoque.getQuantidade());
             estoqueAtualizado.setValor(estoque.getValor());
 
@@ -73,23 +70,4 @@ public class estoqueController {
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
-    /*
-     * @RequestMapping("/estoque")
-     * public List<Estoque> listar() {
-     * 
-     * Estoque e1 = new Estoque(1L, "Porta de Madeira", 50, 150.0, "Fornecedor A",
-     * Produto.PORTA);
-     * Estoque e2 = new Estoque(2L, "Janela de Alumínio", 30, 200.0, "Fornecedor B",
-     * Produto.JANELA);
-     * Estoque e3 = new Estoque(3L, "Persiana", 20, 100.0, "Fornecedor C",
-     * Produto.PERSIANA);
-     * Estoque e4 = new Estoque(4L, "Vidro", 15, 250.0, "Fornecedor D",
-     * Produto.VIDRO);
-     * Estoque e5 = new Estoque(5L, "Fechadura", 40, 75.0, "Fornecedor E",
-     * Produto.FECHADURA);
-     * 
-     * return Arrays.asList (e1, e2, e3, e4, e5);
-     * }
-     */
 }
