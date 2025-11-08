@@ -1,18 +1,18 @@
 package com.tjportas.estoque.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import com.tjportas.estoque.entity.Modelo;
 
 @Entity
 @Data
@@ -22,17 +22,17 @@ import com.tjportas.estoque.entity.Modelo;
 @AllArgsConstructor
 @ToString
 
-public class Estoque {
+public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id_estoque;
+    private Long id_fornecedor;
+   
+    private String nome;
+    private String localidade;
+    private String telefone;
+    private String email;
 
-    private Long codigo;
-    private Integer quantidade;
-    private Double valor;
-
-    @ManyToOne
-    @JoinColumn(name = "id_modelo")
-    private Modelo modelo;
+    @OneToMany
+    private List<Modelo> modelos;
 
 }
