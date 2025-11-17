@@ -53,22 +53,23 @@ estoque/
    - MySQL instalado e em execução
 
 2. Clonar o repositório:
+   
    git clone https://github.com/GabrielPeicher/Projeto-Estoque.git
    cd Projeto-Estoque/estoque
 
-3. Configurar o banco de dados no arquivo application.properties:
+4. Configurar o banco de dados no arquivo application.properties:
    spring.datasource.url=jdbc:mysql://localhost:3306/estoque_db
    spring.datasource.username=root
    spring.datasource.password=senha
    spring.jpa.hibernate.ddl-auto=update
 
-4. Executar a aplicação:
+5. Executar a aplicação:
    
    ./mvnw spring-boot:run
    ou
    mvn spring-boot:run
 
-5. Acessar a API em:
+6. Acessar a API em:
    
    http://localhost:8080
 
