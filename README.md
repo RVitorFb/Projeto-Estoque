@@ -63,11 +63,13 @@ estoque/
    spring.jpa.hibernate.ddl-auto=update
 
 4. Executar a aplicação:
+   
    ./mvnw spring-boot:run
-   # ou
+   ou
    mvn spring-boot:run
 
 5. Acessar a API em:
+   
    http://localhost:8080
 
 ## Endpoints REST (Exemplo)
