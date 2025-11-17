@@ -12,7 +12,6 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import com.tjportas.estoque.entity.Modelo;
 
 @Entity
 @Data

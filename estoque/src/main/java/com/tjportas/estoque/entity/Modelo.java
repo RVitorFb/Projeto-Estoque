@@ -30,14 +30,14 @@ public class Modelo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_modelo;
-   
+
     private String cor;
     private String material;
     private String largura;
     private String altura;
 
     @ManyToOne
-    @JoinColumn(name = "id_fornecedor")
+    @JoinColumn(name = "fornecedor_id_fornecedor")
     private Fornecedor fornecedor;
 
     @OneToMany(mappedBy = "modelo")

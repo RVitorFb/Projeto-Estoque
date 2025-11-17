@@ -26,7 +26,7 @@ public class Fornecedor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id_fornecedor;
-   
+
     private String nome;
     private String localidade;
     private String telefone;
