@@ -1,6 +1,6 @@
-# Projeto Estoque
+# Projeto Estoque - TJ Portas
 
-Sistema de gerenciamento de estoque desenvolvido em Java utilizando o Spring Boot, com suporte a operações CRUD para produtos e controle de quantidades em estoque.
+Sistema de gerenciamento de estoque desenvolvido em Java 17+ utilizando Spring Boot, com API REST para cadastro de fornecedores, modelos, produtos e controle de quantidades em estoque, permitindo operações CRUD integradas e persistência em MySQL.
 
 ## Tecnologias Utilizadas
 
@@ -8,7 +8,10 @@ Sistema de gerenciamento de estoque desenvolvido em Java utilizando o Spring Boo
 - Spring Boot
 - Spring Web (REST APIs)
 - Spring Data JPA (Acesso ao banco de dados)
+- MySQL (Banco de dados relacional)
 - Maven (Gerenciamento de dependências e build)
+- Lombok (Redução de boilerplate em entidades)
+- Insomnia (Testes e simulações de endpoints)
 
 ## Estrutura do Projeto
 
@@ -17,38 +20,51 @@ estoque/
  ├── src/
  │   ├── main/
  │   │   ├── java/com/tjportas/estoque/
- │   │   │   ├── EstoqueApplication.java         # Classe principal da aplicação
+ │   │   │   ├── EstoqueApplication.java             # Classe principal da aplicação
  │   │   │   ├── controller/
- │   │   │   │   └── estoqueController.java      # Controlador REST para operações de estoque
+ │   │   │   │   ├── FornecedorController.java       # Controller REST para Fornecedor
+ │   │   │   │   ├── ModeloController.java          # Controller REST para Modelo
+ │   │   │   │   ├── ProdutoController.java         # Controller REST para Produto
+ │   │   │   │   └── EstoqueController.java         # Controller REST para Estoque
  │   │   │   ├── entity/
- │   │   │   │   ├── Estoque.java                # Entidade Estoque
- │   │   │   │   └── Produto.java                # Entidade Produto
+ │   │   │   │   ├── Fornecedor.java                # Entidade Fornecedor
+ │   │   │   │   ├── Modelo.java                    # Entidade Modelo
+ │   │   │   │   ├── Produto.java                   # Entidade Produto
+ │   │   │   │   └── Estoque.java                   # Entidade Estoque
  │   │   │   └── repository/
- │   │   │       └── EstoqueRepository.java      # Repositório JPA para Estoque
+ │   │   │       ├── FornecedorRepository.java      # Repositório JPA para Fornecedor
+ │   │   │       ├── ModeloRepository.java          # Repositório JPA para Modelo
+ │   │   │       ├── ProdutoRepository.java         # Repositório JPA para Produto
+ │   │   │       └── EstoqueRepository.java         # Repositório JPA para Estoque
  │   │   └── resources/
- │   │       ├── application.properties          # Configurações da aplicação
+ │   │       ├── application.properties            # Configurações da aplicação
  │   │       └── META-INF/
  │   └── test/java/com/tjportas/estoque/
- │       └── EstoqueApplicationTests.java        # Testes unitários
- ├── pom.xml                                     # Arquivo de configuração do Maven
- └── mvnw / mvnw.cmd                             # Wrappers do Maven
+ │       └── EstoqueApplicationTests.java          # Testes unitários
+ ├── pom.xml                                       # Arquivo de configuração do Maven
+ └── mvnw / mvnw.cmd                               # Wrappers do Maven
 ```
 
 ## Configuração
 
 1. Requisitos:
-   - Java 17 ou superior instalado
-   - Maven (opcional se usar os wrappers mvnw)
+   - Java 17 ou superior
+   - Maven (ou usar wrappers ./mvnw)
+   - MySQL instalado e em execução
 
 2. Clonar o repositório:
    git clone https://github.com/GabrielPeicher/Projeto-Estoque.git
    cd Projeto-Estoque/estoque
 
-3. Configurar o banco de dados no arquivo application.properties, se necessário.
+3. Configurar o banco de dados no arquivo application.properties:
+   spring.datasource.url=jdbc:mysql://localhost:3306/estoque_db
+   spring.datasource.username=root
+   spring.datasource.password=senha
+   spring.jpa.hibernate.ddl-auto=update
 
 4. Executar a aplicação:
    ./mvnw spring-boot:run
-   ou
+   # ou
    mvn spring-boot:run
 
 5. Acessar a API em:
@@ -56,19 +72,40 @@ estoque/
 
 ## Endpoints REST (Exemplo)
 
-| Método | Endpoint      | Descrição                          |
-|--------|---------------|------------------------------------|
-| GET    | /estoque      | Lista todos os produtos em estoque |
-| POST   | /estoque      | Adiciona um novo produto           |
-| PUT    | /estoque/{id} | Atualiza informações de um produto |
-| DELETE | /estoque/{id} | Remove um produto do estoque       |
+| Entidade   | Método | Endpoint         | Descrição                             |
+| ---------- | ------ | ---------------- | ------------------------------------- |
+| Fornecedor | GET    | /fornecedor      | Lista todos os fornecedores           |
+| Fornecedor | POST   | /fornecedor      | Adiciona um novo fornecedor           |
+| Fornecedor | PUT    | /fornecedor/{id} | Atualiza informações de um fornecedor |
+| Fornecedor | DELETE | /fornecedor/{id} | Remove um fornecedor                  |
+| Modelo     | GET    | /modelo          | Lista todos os modelos                |
+| Modelo     | POST   | /modelo          | Adiciona um novo modelo               |
+| Modelo     | PUT    | /modelo/{id}     | Atualiza informações de um modelo     |
+| Modelo     | DELETE | /modelo/{id}     | Remove um modelo                      |
+| Produto    | GET    | /produto         | Lista todos os produtos               |
+| Produto    | POST   | /produto         | Adiciona um novo produto              |
+| Produto    | PUT    | /produto/{id}    | Atualiza informações de um produto    |
+| Produto    | DELETE | /produto/{id}    | Remove um produto                     |
+| Estoque    | GET    | /estoque         | Lista todos os itens em estoque       |
+| Estoque    | POST   | /estoque         | Adiciona um novo item ao estoque      |
+| Estoque    | PUT    | /estoque/{id}    | Atualiza informações do estoque       |
+| Estoque    | DELETE | /estoque/{id}    | Remove um item do estoque             |
 
-(Os endpoints podem variar conforme a implementação.)
+Todos os retornos estão em formato JSON.
 
-## Testes
+## Testes e Simulações
 
-Para executar os testes automatizados:
-   ./mvnw test
+Testes realizados no Insomnia para todas as entidades:
+POST → criação de registros
+GET → listagem
+PUT → atualização
+DELETE → exclusão
+
+<p align="center">
+  <img src="https://github.com/RVitorFb/Projeto-Estoque/blob/main/insominia-testes.jpg?raw=true" alt="Banner Raul" width="100%" />
+</p>
+
+Confirmação da persistência de dados no MySQL.
 
 ## Licença
 
