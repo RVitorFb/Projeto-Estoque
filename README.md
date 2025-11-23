@@ -85,58 +85,69 @@ Para rodar o projeto, instale:
 ---
 
 ## Como rodar o projeto
+ Configuração
 
-git clone https://github.com/GabrielPeicher/Projeto-Estoque
-cd Projeto-Estoque
-mvn clean install
-mvn spring-boot:run
+1. Requisitos:
+   - Java 17 ou superior
+   - Maven (ou usar wrappers ./mvnw)
+   - MySQL instalado e em execução
 
-Aplicação iniciará em:
+2. Clonar o repositório:
+   
+   git clone https://github.com/GabrielPeicher/Projeto-Estoque.git
+   cd Projeto-Estoque/estoque
 
-http://localhost:8080
+3. Configurar o banco de dados no arquivo application.properties:
+```
+   spring.datasource.url=jdbc:mysql://localhost:3306/estoque_db
+   spring.datasource.username=root
+   spring.datasource.password=senha
+   spring.jpa.hibernate.ddl-auto=update
+```
 
+5. Executar a aplicação:
+   
+   ./mvnw spring-boot:run
+   ou
+   mvn spring-boot:run
+
+6. Acessar a API em:
+   
+   http://localhost:8080
 ---
 
-## Configuração do application.properties
+## Endpoints REST (Exemplo)
 
-Exemplo:
+| Entidade   | Método | Endpoint         | Descrição                             |
+| ---------- | ------ | ---------------- | ------------------------------------- |
+| Fornecedor | GET    | /fornecedor      | Lista todos os fornecedores           |
+| Fornecedor | POST   | /fornecedor      | Adiciona um novo fornecedor           |
+| Fornecedor | PUT    | /fornecedor/{id} | Atualiza informações de um fornecedor |
+| Fornecedor | DELETE | /fornecedor/{id} | Remove um fornecedor                  |
+| Modelo     | GET    | /modelo          | Lista todos os modelos                |
+| Modelo     | POST   | /modelo          | Adiciona um novo modelo               |
+| Modelo     | PUT    | /modelo/{id}     | Atualiza informações de um modelo     |
+| Modelo     | DELETE | /modelo/{id}     | Remove um modelo                      |
+| Produto    | GET    | /produto         | Lista todos os produtos               |
+| Produto    | POST   | /produto         | Adiciona um novo produto              |
+| Produto    | PUT    | /produto/{id}    | Atualiza informações de um produto    |
+| Produto    | DELETE | /produto/{id}    | Remove um produto                     |
+| Estoque    | GET    | /estoque         | Lista todos os itens em estoque       |
+| Estoque    | POST   | /estoque         | Adiciona um novo item ao estoque      |
+| Estoque    | PUT    | /estoque/{id}    | Atualiza informações do estoque       |
+| Estoque    | DELETE | /estoque/{id}    | Remove um item do estoque             |
 
-spring.datasource.url=jdbc:mysql://localhost:3306/estoque
-spring.datasource.username=root
-spring.datasource.password=1234
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-
----
-
-## Endpoints da API
-
-### Produtos
-
-GET /produtos  
-Lista todos os produtos
-
-GET /produtos/{id}  
-Busca por ID
-
-POST /produtos  
-Cria produto
-
-PUT /produtos/{id}  
-Atualiza produto
-
-DELETE /produtos/{id}  
-Deleta produto
+Todos os retornos estão em formato JSON.
 
 Exemplo POST:
-
+```
 {
   "nome": "Caderno",
   "descricao": "Caderno 200 folhas",
   "preco": 12.5,
   "quantidadeMinima": 5
 }
+```
 
 <p align="center">
   <img src="https://github.com/RVitorFb/Projeto-Estoque/blob/main/insominia-testes.jpg?raw=true" alt="Banner Raul" width="100%" />
