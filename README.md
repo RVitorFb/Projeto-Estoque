@@ -196,7 +196,28 @@ Escolha ou adicione uma licença (MIT recomendado).
 
 ---
 
-## Autor
+## 👨‍💻 Desenvolvido por
 
-RVitorFb  
-GitHub: https://github.com/RVitorFb
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/RVitorFb">
+        <img src="https://github.com/RVitorFb.png" width="100px" style="border-radius: 50%;" alt="RVitorFb"/>
+        <br />
+        <sub><b>RVitorFb</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/RVitorFb" title="GitHub">💻 Desenvolvedor</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/GabrielPeicher">
+        <img src="https://github.com/GabrielPeicher.png" pending-left="50px" width="100px" style="border-radius: 50%;" alt="GabrielPeicher"/>
+        <br />
+        <sub><b>Gabriel Peicher</b></sub>
+      </a>
+      <br />
+      <a href="https://github.com/GabrielPeicher" title="GitHub">💻 Desenvolvedor</a>
+    </td>
+  </tr>
+</table>
+
