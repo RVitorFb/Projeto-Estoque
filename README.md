@@ -155,23 +155,6 @@ Exemplo POST:
 
 ---
 
-### Movimentações
-
-POST /estoque/entrada  
-Registra entrada
-
-POST /estoque/saida  
-Registra saída
-
-Exemplo:
-
-{
-  "produtoId": 1,
-  "quantidade": 10
-}
-
----
-
 ### Relatórios
 
 GET /estoque/atual  
