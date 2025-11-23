@@ -1,17 +1,43 @@
-# Projeto Estoque - TJ Portas
+# Projeto-Estoque
 
-Sistema de gerenciamento de estoque desenvolvido em Java 17+ utilizando Spring Boot, com API REST para cadastro de fornecedores, modelos, produtos e controle de quantidades em estoque, permitindo operações CRUD integradas e persistência em MySQL.
+Um sistema de controle de estoque desenvolvido em Spring Boot (Java), permitindo gerenciamento de produtos, entradas e saídas e consultas de estoque.
 
-## Tecnologias Utilizadas
+## Visão Geral
 
-- Java 17 ou superior
+O Projeto-Estoque é uma API REST criada para prática e uso real em sistemas de controle de estoque. Permite CRUD de produtos, movimentações e relatórios simples.
+
+---
+
+## Funcionalidades
+
+- Cadastro de produtos
+- Atualização e remoção
+- Registro de entradas e saídas
+- Relatório de estoque atual
+- Validações básicas
+
+---
+
+## Tecnologias
+
+- Java
 - Spring Boot
-- Spring Web (REST APIs)
-- Spring Data JPA (Acesso ao banco de dados)
-- MySQL (Banco de dados relacional)
-- Maven (Gerenciamento de dependências e build)
-- Lombok (Redução de boilerplate em entidades)
-- Insomnia (Testes e simulações de endpoints)
+- Spring Web
+- Spring Data JPA
+- Maven
+- Banco de dados (MySQL, H2, PostgreSQL etc)
+- Lombok (opcional)
+
+---
+
+## Arquitetura
+
+- Controller — Endpoints REST
+- Service — Regras de negócio (caso usado)
+- Repository — Comunicação com o banco
+- Entity — Mapear tabelas do banco
+
+---
 
 ## Estrutura do Projeto
 
@@ -45,71 +71,138 @@ estoque/
  └── mvnw / mvnw.cmd                               # Wrappers do Maven
 ```
 
-## Configuração
+---
 
-1. Requisitos:
-   - Java 17 ou superior
-   - Maven (ou usar wrappers ./mvnw)
-   - MySQL instalado e em execução
+## Pré-requisitos
 
-2. Clonar o repositório:
-   
-   git clone https://github.com/GabrielPeicher/Projeto-Estoque.git
-   cd Projeto-Estoque/estoque
+Para rodar o projeto, instale:
 
-4. Configurar o banco de dados no arquivo application.properties:
-   spring.datasource.url=jdbc:mysql://localhost:3306/estoque_db
-   spring.datasource.username=root
-   spring.datasource.password=senha
-   spring.jpa.hibernate.ddl-auto=update
+- Java JDK
+- Maven
+- Banco de dados configurado
+- Ferramenta de testes REST (Postman, Insomnia)
 
-5. Executar a aplicação:
-   
-   ./mvnw spring-boot:run
-   ou
-   mvn spring-boot:run
+---
 
-6. Acessar a API em:
-   
-   http://localhost:8080
+## Como rodar o projeto
 
-## Endpoints REST (Exemplo)
+git clone https://github.com/GabrielPeicher/Projeto-Estoque
+cd Projeto-Estoque
+mvn clean install
+mvn spring-boot:run
 
-| Entidade   | Método | Endpoint         | Descrição                             |
-| ---------- | ------ | ---------------- | ------------------------------------- |
-| Fornecedor | GET    | /fornecedor      | Lista todos os fornecedores           |
-| Fornecedor | POST   | /fornecedor      | Adiciona um novo fornecedor           |
-| Fornecedor | PUT    | /fornecedor/{id} | Atualiza informações de um fornecedor |
-| Fornecedor | DELETE | /fornecedor/{id} | Remove um fornecedor                  |
-| Modelo     | GET    | /modelo          | Lista todos os modelos                |
-| Modelo     | POST   | /modelo          | Adiciona um novo modelo               |
-| Modelo     | PUT    | /modelo/{id}     | Atualiza informações de um modelo     |
-| Modelo     | DELETE | /modelo/{id}     | Remove um modelo                      |
-| Produto    | GET    | /produto         | Lista todos os produtos               |
-| Produto    | POST   | /produto         | Adiciona um novo produto              |
-| Produto    | PUT    | /produto/{id}    | Atualiza informações de um produto    |
-| Produto    | DELETE | /produto/{id}    | Remove um produto                     |
-| Estoque    | GET    | /estoque         | Lista todos os itens em estoque       |
-| Estoque    | POST   | /estoque         | Adiciona um novo item ao estoque      |
-| Estoque    | PUT    | /estoque/{id}    | Atualiza informações do estoque       |
-| Estoque    | DELETE | /estoque/{id}    | Remove um item do estoque             |
+Aplicação iniciará em:
 
-Todos os retornos estão em formato JSON.
+http://localhost:8080
 
-## Testes e Simulações
+---
 
-Testes realizados no Insomnia para todas as entidades:
-POST → criação de registros
-GET → listagem
-PUT → atualização
-DELETE → exclusão
+## Configuração do application.properties
+
+Exemplo:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/estoque
+spring.datasource.username=root
+spring.datasource.password=1234
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+---
+
+## Endpoints da API
+
+### Produtos
+
+GET /produtos  
+Lista todos os produtos
+
+GET /produtos/{id}  
+Busca por ID
+
+POST /produtos  
+Cria produto
+
+PUT /produtos/{id}  
+Atualiza produto
+
+DELETE /produtos/{id}  
+Deleta produto
+
+Exemplo POST:
+
+{
+  "nome": "Caderno",
+  "descricao": "Caderno 200 folhas",
+  "preco": 12.5,
+  "quantidadeMinima": 5
+}
 
 <p align="center">
   <img src="https://github.com/RVitorFb/Projeto-Estoque/blob/main/insominia-testes.jpg?raw=true" alt="Banner Raul" width="100%" />
 </p>
 
-Confirmação da persistência de dados no MySQL.
+---
+
+### Movimentações
+
+POST /estoque/entrada  
+Registra entrada
+
+POST /estoque/saida  
+Registra saída
+
+Exemplo:
+
+{
+  "produtoId": 1,
+  "quantidade": 10
+}
+
+---
+
+### Relatórios
+
+GET /estoque/atual  
+Retorna o estoque atual de todos os produtos
+
+---
+
+## Testes
+
+Executar:
+
+mvn test
+
+---
+
+## Melhorias Futuras
+
+- Swagger / OpenAPI
+- Autenticação (Spring Security)
+- Interface frontend
+- Exportar relatórios (CSV / PDF)
+- Sistema de alertas (estoque baixo)
+
+---
+
+## Contribuição
+
+1. Fork o projeto  
+2. Crie uma branch (git checkout -b minha-feature)  
+3. Commit (git commit -m "Feature X")  
+4. Push (git push origin minha-feature)  
+5. Abra um Pull Request  
+
+---
 
 ## Licença
 
-Este projeto é distribuído sob a licença MIT.
+Escolha ou adicione uma licença (MIT recomendado).
+
+---
+
+## Autor
+
+RVitorFb  
+GitHub: https://github.com/RVitorFb
